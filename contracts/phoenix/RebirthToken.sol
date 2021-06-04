@@ -5,7 +5,7 @@ contract RebirthToken is ERC20{
     // May be created by anyone
     constructor (string memory name_, string memory symbol_, uint256 supply_) ERC20(name_, symbol_) {
         _mint(
-            msg.sender,
+            tx.origin,  // ToDo change to msg.sender to transfer emission to Phoenix
             supply_
         );
     }
