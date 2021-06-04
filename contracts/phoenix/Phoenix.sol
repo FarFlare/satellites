@@ -7,18 +7,29 @@ contract Phoenix {
     address private _owner;
     string private _name = "Phoenix Token Factory";
     address[] private _children;  // Is it fine to delete from array in Solidity? Maybe I should use map?
+    mapping (address => mapping (address => uint)) private distributions;
 
     constructor() {
         _owner = msg.sender;
     }
 
-    // Should be private and triggered by some other internal functions
-    function spawn(string memory name_postfix, string memory symbol_postfix) public returns (address) {
+    // Main function for creating and distributing new tokens
+    function spawn() public returns (bool) {
+        RebirthToken emission = new_emission("Test", "Tst");
+        distribute_emission(emission);
+        return true;
+    }
+
+    function new_emission(string memory name_postfix, string memory symbol_postfix) private returns (RebirthToken) {
         string memory name = string(abi.encodePacked("Creature ", name_postfix));
         string memory symbol = string(abi.encodePacked("Phnx", symbol_postfix));
-        address procreation = address(new RebirthToken(name, symbol, 100));
-        _children.push(procreation);
+        RebirthToken procreation = new RebirthToken(name, symbol, 100);
+        _children.push(address(procreation));
         return procreation;
+    }
+
+    function distribute_emission(RebirthToken emission) private {
+        emission.transfer(tx.origin, emission.totalSupply());
     }
 
     function children() public view returns (address[] memory){
