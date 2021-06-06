@@ -1,0 +1,27 @@
+{
+  "name": "satellites",
+  "version": "1.0.0",
+  "description": "Tokens and drafts with different mechanics/tokenomics",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FarFlare/satellites.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FarFlare/satellites/issues"
+  },
+  "homepage": "https://github.com/FarFlare/satellites#readme",
+  "dependencies": {
+    "@openzeppelin/contracts": "^4.1.0",
+    "chai": "^4.3.4",
+    "chai-as-promised": "^7.1.1"
+  }
+}
