@@ -31,7 +31,7 @@ contract('Phoenix', ([deployer, item_to_own, investor1, investor2]) => {
             assert.equal(await web3.eth.getBalance(phoenix.address), web3.utils.toWei(share1, 'ether'))  // Phoenix balance increased
             assert.equal(web3.utils.fromWei((await phoenix.locksFor(investor1, item_to_own)).toString()), share1)  // Lock for investor1 is correct
 
-            await phoenix.allocate(item_to_own, {from: investor2, value: web3.utils.toWei(share2, 'ether')})  // Get allocation for investor1
+            await phoenix.allocate(item_to_own, {from: investor2, value: web3.utils.toWei(share2, 'ether')})  // Get allocation for investor2
             assert.equal(web3.utils.fromWei((await phoenix.locksFor(investor2, item_to_own)).toString()), share2)  // Lock for investor2 is correct
         })
 
