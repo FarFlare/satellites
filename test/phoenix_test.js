@@ -2,7 +2,7 @@ require("chai")
     .use(require("chai-as-promised"))
     .should()
 
-const Phoenix = artifacts.require("Phoenix")
+const Phoenix = artifacts.require("phoenix/Phoenix")
 // const RebirthToken = artifacts.require("RebirthToken")
 
 

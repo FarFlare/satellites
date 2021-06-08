@@ -21,12 +21,25 @@ def get_all():
     return resp.json()
 
 
-def get_sell_orders():
-    resp = requests.get(f"https://api-staging.rarible.com/protocol/v0.1/ethereum/order/orders/sell/byItem",
-                        params={"contract": contract,
-                                "tokenId": token_id})
+def get_sell_orders(by_item=False):
+    if by_item:
+        resp = requests.get(f"https://api-staging.rarible.com/protocol/v0.1/ethereum/order/orders/sell/byItem",
+                            params={"contract": contract,
+                                    "tokenId": token_id})
+    else:
+        resp = requests.get(f"https://api-staging.rarible.com/protocol/v0.1/ethereum/order/orders/sell",
+                            params={
+                                "sort": "LAST_UPDATE"
+                            })
+    return resp.json()
+
+
+def search_orders():
+    # resp = requests.post(f"https://api-staging.rarible.com/protocol/v0.1/ethereum/order/indexer/orders/search",
+    resp = requests.post(f"http://api-staging.rarible.com/protocol/ethereum/order/indexer/v1/orders/search",
+                         data={"@type": "sell"})
     return resp.json()
 
 
 if __name__ == '__main__':
-    pprint(get_meta_by_id())
+    pprint(get_sell_orders())
