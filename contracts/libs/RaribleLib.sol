@@ -16,11 +16,21 @@ library RaribleStructs{
         Asset makeAsset;
         address taker;
         Asset takeAsset;
-        uint salt;
+        bytes salt;
         uint start;
         uint end;
         bytes4 dataType;
         bytes data;
+    }
+
+    struct Part {
+        address payable account;
+        uint96 value;
+    }
+
+    struct DataV1 {
+        Part[] payouts;
+        Part[] originFees;
     }
 }
 
@@ -30,6 +40,6 @@ interface RaribleExchange {
         RaribleStructs.Order memory orderLeft,
         bytes memory signatureLeft,
         RaribleStructs.Order memory orderRight,
-        bytes memory signatureRight
+        bytes32 signatureRight
     ) external payable;
 }

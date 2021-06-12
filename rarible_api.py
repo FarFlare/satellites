@@ -41,5 +41,13 @@ def search_orders():
     return resp.json()
 
 
+# def make_order():
+#     resp = requests.post(f"https://api-staging.rarible.com/protocol/v0.1/ethereum/order/orders",
+#                          data={
+#                              "type": "RARIBLE_V2",
+#                              "maker": ""
+#                          })
+
+
 if __name__ == '__main__':
-    pprint(get_sell_orders())
+    pprint(get_sell_orders(True))
