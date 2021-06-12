@@ -50,4 +50,4 @@ def search_orders():
 
 
 if __name__ == '__main__':
-    pprint(get_sell_orders(True))
+    pprint(get_sell_orders(False))
