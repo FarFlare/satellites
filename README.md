@@ -1,2 +1,2 @@
 # Satellites
-Tokens and drafts with different mechanics/tokenomics
+Definitionhack project
