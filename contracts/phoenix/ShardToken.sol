@@ -11,6 +11,6 @@ contract ShardToken is ERC20{
     }
 
     function decimals() public pure override returns (uint8) {
-        return 0;
+        return 18;
     }
 }
