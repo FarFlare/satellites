@@ -1,0 +1,1611 @@
+{
+  "contractName": "RaribleStructs",
+  "abi": [],
+  "metadata": "{\"compiler\":{\"version\":\"0.8.4+commit.c7e474f2\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"/Users/y.sosunov/git/far_flare/satellites/contracts/libs/RaribleLib.sol\":\"RaribleStructs\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/y.sosunov/git/far_flare/satellites/contracts/libs/RaribleLib.sol\":{\"keccak256\":\"0xbd778d8688c68a704da33c78f11c520d53ed5129d46e15e60d9d1a934e7944c4\",\"urls\":[\"bzz-raw://eea873d25085dd6f65ceb762007fc15baae3d95ba9cef2726a08e2132aa1b323\",\"dweb:/ipfs/QmYSTF9uSKXhBmr3msHd3KLAPuEJMjtTagiFqbTY1QPpBJ\"]}},\"version\":1}",
+  "bytecode": "0x60566050600b82828239805160001a6073146043577f4e487b7100000000000000000000000000000000000000000000000000000000600052600060045260246000fd5b30600052607381538281f3fe73000000000000000000000000000000000000000030146080604052600080fdfea2646970667358221220f3ca59925d067bccb6259f951545a83c26121018df2f9c3205fee5e68f87567064736f6c63430008040033",
+  "deployedBytecode": "0x73000000000000000000000000000000000000000030146080604052600080fdfea2646970667358221220f3ca59925d067bccb6259f951545a83c26121018df2f9c3205fee5e68f87567064736f6c63430008040033",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "25:559:2:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;",
+  "deployedSourceMap": "25:559:2:-:0;;;;;;;;",
+  "source": "pragma solidity ^0.8.0;\n\nlibrary RaribleStructs{\n    struct AssetType {\n        bytes4 assetClass;\n        bytes data;\n    }\n\n    struct Asset {\n        AssetType assetType;\n        uint value;\n    }\n\n    struct Order {\n        address maker;\n        Asset makeAsset;\n        address taker;\n        Asset takeAsset;\n        bytes salt;\n        uint start;\n        uint end;\n        bytes4 dataType;\n        bytes data;\n    }\n\n    struct Part {\n        address payable account;\n        uint96 value;\n    }\n\n    struct DataV1 {\n        Part[] payouts;\n        Part[] originFees;\n    }\n}\n\n\ninterface RaribleExchange {\n    function matchOrders(\n        RaribleStructs.Order memory orderLeft,\n        bytes memory signatureLeft,\n        RaribleStructs.Order memory orderRight,\n        bytes32 signatureRight\n    ) external payable;\n}",
+  "sourcePath": "/Users/y.sosunov/git/far_flare/satellites/contracts/libs/RaribleLib.sol",
+  "ast": {
+    "absolutePath": "/Users/y.sosunov/git/far_flare/satellites/contracts/libs/RaribleLib.sol",
+    "exportedSymbols": {
+      "RaribleExchange": [
+        167
+      ],
+      "RaribleStructs": [
+        153
+      ]
+    },
+    "id": 168,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 106,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:2"
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "library",
+        "fullyImplemented": true,
+        "id": 153,
+        "linearizedBaseContracts": [
+          153
+        ],
+        "name": "RaribleStructs",
+        "nameLocation": "33:14:2",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "canonicalName": "RaribleStructs.AssetType",
+            "id": 111,
+            "members": [
+              {
+                "constant": false,
+                "id": 108,
+                "mutability": "mutable",
+                "name": "assetClass",
+                "nameLocation": "87:10:2",
+                "nodeType": "VariableDeclaration",
+                "scope": 111,
+                "src": "80:17:2",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bytes4",
+                  "typeString": "bytes4"
+                },
+                "typeName": {
+                  "id": 107,
+                  "name": "bytes4",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "80:6:2",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes4",
+                    "typeString": "bytes4"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 110,
+                "mutability": "mutable",
+                "name": "data",
+                "nameLocation": "113:4:2",
+                "nodeType": "VariableDeclaration",
+                "scope": 111,
+                "src": "107:10:2",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bytes_storage_ptr",
+                  "typeString": "bytes"
+                },
+                "typeName": {
+                  "id": 109,
+                  "name": "bytes",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "107:5:2",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_storage_ptr",
+                    "typeString": "bytes"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "name": "AssetType",
+            "nameLocation": "60:9:2",
+            "nodeType": "StructDefinition",
+            "scope": 153,
+            "src": "53:71:2",
+            "visibility": "public"
+          },
+          {
+            "canonicalName": "RaribleStructs.Asset",
+            "id": 117,
+            "members": [
+              {
+                "constant": false,
+                "id": 114,
+                "mutability": "mutable",
+                "name": "assetType",
+                "nameLocation": "163:9:2",
+                "nodeType": "VariableDeclaration",
+                "scope": 117,
+                "src": "153:19:2",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_struct$_AssetType_$111_storage_ptr",
+                  "typeString": "struct RaribleStructs.AssetType"
+                },
+                "typeName": {
+                  "id": 113,
+                  "nodeType": "UserDefinedTypeName",
+                  "pathNode": {
+                    "id": 112,
+                    "name": "AssetType",
+                    "nodeType": "IdentifierPath",
+                    "referencedDeclaration": 111,
+                    "src": "153:9:2"
+                  },
+                  "referencedDeclaration": 111,
+                  "src": "153:9:2",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_AssetType_$111_storage_ptr",
+                    "typeString": "struct RaribleStructs.AssetType"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 116,
+                "mutability": "mutable",
+                "name": "value",
+                "nameLocation": "187:5:2",
+                "nodeType": "VariableDeclaration",
+                "scope": 117,
+                "src": "182:10:2",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 115,
+                  "name": "uint",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "182:4:2",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "name": "Asset",
+            "nameLocation": "137:5:2",
+            "nodeType": "StructDefinition",
+            "scope": 153,
+            "src": "130:69:2",
+            "visibility": "public"
+          },
+          {
+            "canonicalName": "RaribleStructs.Order",
+            "id": 138,
+            "members": [
+              {
+                "constant": false,
+                "id": 119,
+                "mutability": "mutable",
+                "name": "maker",
+                "nameLocation": "236:5:2",
+                "nodeType": "VariableDeclaration",
+                "scope": 138,
+                "src": "228:13:2",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 118,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "228:7:2",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 122,
+                "mutability": "mutable",
+                "name": "makeAsset",
+                "nameLocation": "257:9:2",
+                "nodeType": "VariableDeclaration",
+                "scope": 138,
+                "src": "251:15:2",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_struct$_Asset_$117_storage_ptr",
+                  "typeString": "struct RaribleStructs.Asset"
+                },
+                "typeName": {
+                  "id": 121,
+                  "nodeType": "UserDefinedTypeName",
+                  "pathNode": {
+                    "id": 120,
+                    "name": "Asset",
+                    "nodeType": "IdentifierPath",
+                    "referencedDeclaration": 117,
+                    "src": "251:5:2"
+                  },
+                  "referencedDeclaration": 117,
+                  "src": "251:5:2",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_Asset_$117_storage_ptr",
+                    "typeString": "struct RaribleStructs.Asset"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 124,
+                "mutability": "mutable",
+                "name": "taker",
+                "nameLocation": "284:5:2",
+                "nodeType": "VariableDeclaration",
+                "scope": 138,
+                "src": "276:13:2",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 123,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "276:7:2",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 127,
+                "mutability": "mutable",
+                "name": "takeAsset",
+                "nameLocation": "305:9:2",
+                "nodeType": "VariableDeclaration",
+                "scope": 138,
+                "src": "299:15:2",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_struct$_Asset_$117_storage_ptr",
+                  "typeString": "struct RaribleStructs.Asset"
+                },
+                "typeName": {
+                  "id": 126,
+                  "nodeType": "UserDefinedTypeName",
+                  "pathNode": {
+                    "id": 125,
+                    "name": "Asset",
+                    "nodeType": "IdentifierPath",
+                    "referencedDeclaration": 117,
+                    "src": "299:5:2"
+                  },
+                  "referencedDeclaration": 117,
+                  "src": "299:5:2",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_Asset_$117_storage_ptr",
+                    "typeString": "struct RaribleStructs.Asset"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 129,
+                "mutability": "mutable",
+                "name": "salt",
+                "nameLocation": "330:4:2",
+                "nodeType": "VariableDeclaration",
+                "scope": 138,
+                "src": "324:10:2",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bytes_storage_ptr",
+                  "typeString": "bytes"
+                },
+                "typeName": {
+                  "id": 128,
+                  "name": "bytes",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "324:5:2",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_storage_ptr",
+                    "typeString": "bytes"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 131,
+                "mutability": "mutable",
+                "name": "start",
+                "nameLocation": "349:5:2",
+                "nodeType": "VariableDeclaration",
+                "scope": 138,
+                "src": "344:10:2",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 130,
+                  "name": "uint",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "344:4:2",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 133,
+                "mutability": "mutable",
+                "name": "end",
+                "nameLocation": "369:3:2",
+                "nodeType": "VariableDeclaration",
+                "scope": 138,
+                "src": "364:8:2",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 132,
+                  "name": "uint",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "364:4:2",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 135,
+                "mutability": "mutable",
+                "name": "dataType",
+                "nameLocation": "389:8:2",
+                "nodeType": "VariableDeclaration",
+                "scope": 138,
+                "src": "382:15:2",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bytes4",
+                  "typeString": "bytes4"
+                },
+                "typeName": {
+                  "id": 134,
+                  "name": "bytes4",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "382:6:2",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes4",
+                    "typeString": "bytes4"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 137,
+                "mutability": "mutable",
+                "name": "data",
+                "nameLocation": "413:4:2",
+                "nodeType": "VariableDeclaration",
+                "scope": 138,
+                "src": "407:10:2",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bytes_storage_ptr",
+                  "typeString": "bytes"
+                },
+                "typeName": {
+                  "id": 136,
+                  "name": "bytes",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "407:5:2",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_storage_ptr",
+                    "typeString": "bytes"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "name": "Order",
+            "nameLocation": "212:5:2",
+            "nodeType": "StructDefinition",
+            "scope": 153,
+            "src": "205:219:2",
+            "visibility": "public"
+          },
+          {
+            "canonicalName": "RaribleStructs.Part",
+            "id": 143,
+            "members": [
+              {
+                "constant": false,
+                "id": 140,
+                "mutability": "mutable",
+                "name": "account",
+                "nameLocation": "468:7:2",
+                "nodeType": "VariableDeclaration",
+                "scope": 143,
+                "src": "452:23:2",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address_payable",
+                  "typeString": "address payable"
+                },
+                "typeName": {
+                  "id": 139,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "452:15:2",
+                  "stateMutability": "payable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address_payable",
+                    "typeString": "address payable"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 142,
+                "mutability": "mutable",
+                "name": "value",
+                "nameLocation": "492:5:2",
+                "nodeType": "VariableDeclaration",
+                "scope": 143,
+                "src": "485:12:2",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint96",
+                  "typeString": "uint96"
+                },
+                "typeName": {
+                  "id": 141,
+                  "name": "uint96",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "485:6:2",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint96",
+                    "typeString": "uint96"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "name": "Part",
+            "nameLocation": "437:4:2",
+            "nodeType": "StructDefinition",
+            "scope": 153,
+            "src": "430:74:2",
+            "visibility": "public"
+          },
+          {
+            "canonicalName": "RaribleStructs.DataV1",
+            "id": 152,
+            "members": [
+              {
+                "constant": false,
+                "id": 147,
+                "mutability": "mutable",
+                "name": "payouts",
+                "nameLocation": "541:7:2",
+                "nodeType": "VariableDeclaration",
+                "scope": 152,
+                "src": "534:14:2",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_array$_t_struct$_Part_$143_storage_$dyn_storage_ptr",
+                  "typeString": "struct RaribleStructs.Part[]"
+                },
+                "typeName": {
+                  "baseType": {
+                    "id": 145,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 144,
+                      "name": "Part",
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 143,
+                      "src": "534:4:2"
+                    },
+                    "referencedDeclaration": 143,
+                    "src": "534:4:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_Part_$143_storage_ptr",
+                      "typeString": "struct RaribleStructs.Part"
+                    }
+                  },
+                  "id": 146,
+                  "nodeType": "ArrayTypeName",
+                  "src": "534:6:2",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_struct$_Part_$143_storage_$dyn_storage_ptr",
+                    "typeString": "struct RaribleStructs.Part[]"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 151,
+                "mutability": "mutable",
+                "name": "originFees",
+                "nameLocation": "565:10:2",
+                "nodeType": "VariableDeclaration",
+                "scope": 152,
+                "src": "558:17:2",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_array$_t_struct$_Part_$143_storage_$dyn_storage_ptr",
+                  "typeString": "struct RaribleStructs.Part[]"
+                },
+                "typeName": {
+                  "baseType": {
+                    "id": 149,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 148,
+                      "name": "Part",
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 143,
+                      "src": "558:4:2"
+                    },
+                    "referencedDeclaration": 143,
+                    "src": "558:4:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_Part_$143_storage_ptr",
+                      "typeString": "struct RaribleStructs.Part"
+                    }
+                  },
+                  "id": 150,
+                  "nodeType": "ArrayTypeName",
+                  "src": "558:6:2",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_struct$_Part_$143_storage_$dyn_storage_ptr",
+                    "typeString": "struct RaribleStructs.Part[]"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "name": "DataV1",
+            "nameLocation": "517:6:2",
+            "nodeType": "StructDefinition",
+            "scope": 153,
+            "src": "510:72:2",
+            "visibility": "public"
+          }
+        ],
+        "scope": 168,
+        "src": "25:559:2",
+        "usedErrors": []
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "fullyImplemented": false,
+        "id": 167,
+        "linearizedBaseContracts": [
+          167
+        ],
+        "name": "RaribleExchange",
+        "nameLocation": "597:15:2",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "functionSelector": "60264954",
+            "id": 166,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "matchOrders",
+            "nameLocation": "628:11:2",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 164,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 156,
+                  "mutability": "mutable",
+                  "name": "orderLeft",
+                  "nameLocation": "677:9:2",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 166,
+                  "src": "649:37:2",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_Order_$138_memory_ptr",
+                    "typeString": "struct RaribleStructs.Order"
+                  },
+                  "typeName": {
+                    "id": 155,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 154,
+                      "name": "RaribleStructs.Order",
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 138,
+                      "src": "649:20:2"
+                    },
+                    "referencedDeclaration": 138,
+                    "src": "649:20:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_Order_$138_storage_ptr",
+                      "typeString": "struct RaribleStructs.Order"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 158,
+                  "mutability": "mutable",
+                  "name": "signatureLeft",
+                  "nameLocation": "709:13:2",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 166,
+                  "src": "696:26:2",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_memory_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 157,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "696:5:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 161,
+                  "mutability": "mutable",
+                  "name": "orderRight",
+                  "nameLocation": "760:10:2",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 166,
+                  "src": "732:38:2",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_Order_$138_memory_ptr",
+                    "typeString": "struct RaribleStructs.Order"
+                  },
+                  "typeName": {
+                    "id": 160,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 159,
+                      "name": "RaribleStructs.Order",
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 138,
+                      "src": "732:20:2"
+                    },
+                    "referencedDeclaration": 138,
+                    "src": "732:20:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_Order_$138_storage_ptr",
+                      "typeString": "struct RaribleStructs.Order"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 163,
+                  "mutability": "mutable",
+                  "name": "signatureRight",
+                  "nameLocation": "788:14:2",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 166,
+                  "src": "780:22:2",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 162,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "780:7:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "639:169:2"
+            },
+            "returnParameters": {
+              "id": 165,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "825:0:2"
+            },
+            "scope": 167,
+            "src": "619:207:2",
+            "stateMutability": "payable",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "scope": 168,
+        "src": "587:241:2",
+        "usedErrors": []
+      }
+    ],
+    "src": "0:828:2"
+  },
+  "legacyAST": {
+    "absolutePath": "/Users/y.sosunov/git/far_flare/satellites/contracts/libs/RaribleLib.sol",
+    "exportedSymbols": {
+      "RaribleExchange": [
+        167
+      ],
+      "RaribleStructs": [
+        153
+      ]
+    },
+    "id": 168,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 106,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:2"
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "library",
+        "fullyImplemented": true,
+        "id": 153,
+        "linearizedBaseContracts": [
+          153
+        ],
+        "name": "RaribleStructs",
+        "nameLocation": "33:14:2",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "canonicalName": "RaribleStructs.AssetType",
+            "id": 111,
+            "members": [
+              {
+                "constant": false,
+                "id": 108,
+                "mutability": "mutable",
+                "name": "assetClass",
+                "nameLocation": "87:10:2",
+                "nodeType": "VariableDeclaration",
+                "scope": 111,
+                "src": "80:17:2",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bytes4",
+                  "typeString": "bytes4"
+                },
+                "typeName": {
+                  "id": 107,
+                  "name": "bytes4",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "80:6:2",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes4",
+                    "typeString": "bytes4"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 110,
+                "mutability": "mutable",
+                "name": "data",
+                "nameLocation": "113:4:2",
+                "nodeType": "VariableDeclaration",
+                "scope": 111,
+                "src": "107:10:2",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bytes_storage_ptr",
+                  "typeString": "bytes"
+                },
+                "typeName": {
+                  "id": 109,
+                  "name": "bytes",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "107:5:2",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_storage_ptr",
+                    "typeString": "bytes"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "name": "AssetType",
+            "nameLocation": "60:9:2",
+            "nodeType": "StructDefinition",
+            "scope": 153,
+            "src": "53:71:2",
+            "visibility": "public"
+          },
+          {
+            "canonicalName": "RaribleStructs.Asset",
+            "id": 117,
+            "members": [
+              {
+                "constant": false,
+                "id": 114,
+                "mutability": "mutable",
+                "name": "assetType",
+                "nameLocation": "163:9:2",
+                "nodeType": "VariableDeclaration",
+                "scope": 117,
+                "src": "153:19:2",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_struct$_AssetType_$111_storage_ptr",
+                  "typeString": "struct RaribleStructs.AssetType"
+                },
+                "typeName": {
+                  "id": 113,
+                  "nodeType": "UserDefinedTypeName",
+                  "pathNode": {
+                    "id": 112,
+                    "name": "AssetType",
+                    "nodeType": "IdentifierPath",
+                    "referencedDeclaration": 111,
+                    "src": "153:9:2"
+                  },
+                  "referencedDeclaration": 111,
+                  "src": "153:9:2",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_AssetType_$111_storage_ptr",
+                    "typeString": "struct RaribleStructs.AssetType"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 116,
+                "mutability": "mutable",
+                "name": "value",
+                "nameLocation": "187:5:2",
+                "nodeType": "VariableDeclaration",
+                "scope": 117,
+                "src": "182:10:2",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 115,
+                  "name": "uint",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "182:4:2",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "name": "Asset",
+            "nameLocation": "137:5:2",
+            "nodeType": "StructDefinition",
+            "scope": 153,
+            "src": "130:69:2",
+            "visibility": "public"
+          },
+          {
+            "canonicalName": "RaribleStructs.Order",
+            "id": 138,
+            "members": [
+              {
+                "constant": false,
+                "id": 119,
+                "mutability": "mutable",
+                "name": "maker",
+                "nameLocation": "236:5:2",
+                "nodeType": "VariableDeclaration",
+                "scope": 138,
+                "src": "228:13:2",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 118,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "228:7:2",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 122,
+                "mutability": "mutable",
+                "name": "makeAsset",
+                "nameLocation": "257:9:2",
+                "nodeType": "VariableDeclaration",
+                "scope": 138,
+                "src": "251:15:2",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_struct$_Asset_$117_storage_ptr",
+                  "typeString": "struct RaribleStructs.Asset"
+                },
+                "typeName": {
+                  "id": 121,
+                  "nodeType": "UserDefinedTypeName",
+                  "pathNode": {
+                    "id": 120,
+                    "name": "Asset",
+                    "nodeType": "IdentifierPath",
+                    "referencedDeclaration": 117,
+                    "src": "251:5:2"
+                  },
+                  "referencedDeclaration": 117,
+                  "src": "251:5:2",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_Asset_$117_storage_ptr",
+                    "typeString": "struct RaribleStructs.Asset"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 124,
+                "mutability": "mutable",
+                "name": "taker",
+                "nameLocation": "284:5:2",
+                "nodeType": "VariableDeclaration",
+                "scope": 138,
+                "src": "276:13:2",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 123,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "276:7:2",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 127,
+                "mutability": "mutable",
+                "name": "takeAsset",
+                "nameLocation": "305:9:2",
+                "nodeType": "VariableDeclaration",
+                "scope": 138,
+                "src": "299:15:2",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_struct$_Asset_$117_storage_ptr",
+                  "typeString": "struct RaribleStructs.Asset"
+                },
+                "typeName": {
+                  "id": 126,
+                  "nodeType": "UserDefinedTypeName",
+                  "pathNode": {
+                    "id": 125,
+                    "name": "Asset",
+                    "nodeType": "IdentifierPath",
+                    "referencedDeclaration": 117,
+                    "src": "299:5:2"
+                  },
+                  "referencedDeclaration": 117,
+                  "src": "299:5:2",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_Asset_$117_storage_ptr",
+                    "typeString": "struct RaribleStructs.Asset"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 129,
+                "mutability": "mutable",
+                "name": "salt",
+                "nameLocation": "330:4:2",
+                "nodeType": "VariableDeclaration",
+                "scope": 138,
+                "src": "324:10:2",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bytes_storage_ptr",
+                  "typeString": "bytes"
+                },
+                "typeName": {
+                  "id": 128,
+                  "name": "bytes",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "324:5:2",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_storage_ptr",
+                    "typeString": "bytes"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 131,
+                "mutability": "mutable",
+                "name": "start",
+                "nameLocation": "349:5:2",
+                "nodeType": "VariableDeclaration",
+                "scope": 138,
+                "src": "344:10:2",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 130,
+                  "name": "uint",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "344:4:2",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 133,
+                "mutability": "mutable",
+                "name": "end",
+                "nameLocation": "369:3:2",
+                "nodeType": "VariableDeclaration",
+                "scope": 138,
+                "src": "364:8:2",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 132,
+                  "name": "uint",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "364:4:2",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 135,
+                "mutability": "mutable",
+                "name": "dataType",
+                "nameLocation": "389:8:2",
+                "nodeType": "VariableDeclaration",
+                "scope": 138,
+                "src": "382:15:2",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bytes4",
+                  "typeString": "bytes4"
+                },
+                "typeName": {
+                  "id": 134,
+                  "name": "bytes4",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "382:6:2",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes4",
+                    "typeString": "bytes4"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 137,
+                "mutability": "mutable",
+                "name": "data",
+                "nameLocation": "413:4:2",
+                "nodeType": "VariableDeclaration",
+                "scope": 138,
+                "src": "407:10:2",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bytes_storage_ptr",
+                  "typeString": "bytes"
+                },
+                "typeName": {
+                  "id": 136,
+                  "name": "bytes",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "407:5:2",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_storage_ptr",
+                    "typeString": "bytes"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "name": "Order",
+            "nameLocation": "212:5:2",
+            "nodeType": "StructDefinition",
+            "scope": 153,
+            "src": "205:219:2",
+            "visibility": "public"
+          },
+          {
+            "canonicalName": "RaribleStructs.Part",
+            "id": 143,
+            "members": [
+              {
+                "constant": false,
+                "id": 140,
+                "mutability": "mutable",
+                "name": "account",
+                "nameLocation": "468:7:2",
+                "nodeType": "VariableDeclaration",
+                "scope": 143,
+                "src": "452:23:2",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address_payable",
+                  "typeString": "address payable"
+                },
+                "typeName": {
+                  "id": 139,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "452:15:2",
+                  "stateMutability": "payable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address_payable",
+                    "typeString": "address payable"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 142,
+                "mutability": "mutable",
+                "name": "value",
+                "nameLocation": "492:5:2",
+                "nodeType": "VariableDeclaration",
+                "scope": 143,
+                "src": "485:12:2",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint96",
+                  "typeString": "uint96"
+                },
+                "typeName": {
+                  "id": 141,
+                  "name": "uint96",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "485:6:2",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint96",
+                    "typeString": "uint96"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "name": "Part",
+            "nameLocation": "437:4:2",
+            "nodeType": "StructDefinition",
+            "scope": 153,
+            "src": "430:74:2",
+            "visibility": "public"
+          },
+          {
+            "canonicalName": "RaribleStructs.DataV1",
+            "id": 152,
+            "members": [
+              {
+                "constant": false,
+                "id": 147,
+                "mutability": "mutable",
+                "name": "payouts",
+                "nameLocation": "541:7:2",
+                "nodeType": "VariableDeclaration",
+                "scope": 152,
+                "src": "534:14:2",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_array$_t_struct$_Part_$143_storage_$dyn_storage_ptr",
+                  "typeString": "struct RaribleStructs.Part[]"
+                },
+                "typeName": {
+                  "baseType": {
+                    "id": 145,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 144,
+                      "name": "Part",
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 143,
+                      "src": "534:4:2"
+                    },
+                    "referencedDeclaration": 143,
+                    "src": "534:4:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_Part_$143_storage_ptr",
+                      "typeString": "struct RaribleStructs.Part"
+                    }
+                  },
+                  "id": 146,
+                  "nodeType": "ArrayTypeName",
+                  "src": "534:6:2",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_struct$_Part_$143_storage_$dyn_storage_ptr",
+                    "typeString": "struct RaribleStructs.Part[]"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 151,
+                "mutability": "mutable",
+                "name": "originFees",
+                "nameLocation": "565:10:2",
+                "nodeType": "VariableDeclaration",
+                "scope": 152,
+                "src": "558:17:2",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_array$_t_struct$_Part_$143_storage_$dyn_storage_ptr",
+                  "typeString": "struct RaribleStructs.Part[]"
+                },
+                "typeName": {
+                  "baseType": {
+                    "id": 149,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 148,
+                      "name": "Part",
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 143,
+                      "src": "558:4:2"
+                    },
+                    "referencedDeclaration": 143,
+                    "src": "558:4:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_Part_$143_storage_ptr",
+                      "typeString": "struct RaribleStructs.Part"
+                    }
+                  },
+                  "id": 150,
+                  "nodeType": "ArrayTypeName",
+                  "src": "558:6:2",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_struct$_Part_$143_storage_$dyn_storage_ptr",
+                    "typeString": "struct RaribleStructs.Part[]"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "name": "DataV1",
+            "nameLocation": "517:6:2",
+            "nodeType": "StructDefinition",
+            "scope": 153,
+            "src": "510:72:2",
+            "visibility": "public"
+          }
+        ],
+        "scope": 168,
+        "src": "25:559:2",
+        "usedErrors": []
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "fullyImplemented": false,
+        "id": 167,
+        "linearizedBaseContracts": [
+          167
+        ],
+        "name": "RaribleExchange",
+        "nameLocation": "597:15:2",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "functionSelector": "60264954",
+            "id": 166,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "matchOrders",
+            "nameLocation": "628:11:2",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 164,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 156,
+                  "mutability": "mutable",
+                  "name": "orderLeft",
+                  "nameLocation": "677:9:2",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 166,
+                  "src": "649:37:2",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_Order_$138_memory_ptr",
+                    "typeString": "struct RaribleStructs.Order"
+                  },
+                  "typeName": {
+                    "id": 155,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 154,
+                      "name": "RaribleStructs.Order",
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 138,
+                      "src": "649:20:2"
+                    },
+                    "referencedDeclaration": 138,
+                    "src": "649:20:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_Order_$138_storage_ptr",
+                      "typeString": "struct RaribleStructs.Order"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 158,
+                  "mutability": "mutable",
+                  "name": "signatureLeft",
+                  "nameLocation": "709:13:2",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 166,
+                  "src": "696:26:2",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_memory_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 157,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "696:5:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 161,
+                  "mutability": "mutable",
+                  "name": "orderRight",
+                  "nameLocation": "760:10:2",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 166,
+                  "src": "732:38:2",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_Order_$138_memory_ptr",
+                    "typeString": "struct RaribleStructs.Order"
+                  },
+                  "typeName": {
+                    "id": 160,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 159,
+                      "name": "RaribleStructs.Order",
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 138,
+                      "src": "732:20:2"
+                    },
+                    "referencedDeclaration": 138,
+                    "src": "732:20:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_Order_$138_storage_ptr",
+                      "typeString": "struct RaribleStructs.Order"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 163,
+                  "mutability": "mutable",
+                  "name": "signatureRight",
+                  "nameLocation": "788:14:2",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 166,
+                  "src": "780:22:2",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 162,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "780:7:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "639:169:2"
+            },
+            "returnParameters": {
+              "id": 165,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "825:0:2"
+            },
+            "scope": 167,
+            "src": "619:207:2",
+            "stateMutability": "payable",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "scope": 168,
+        "src": "587:241:2",
+        "usedErrors": []
+      }
+    ],
+    "src": "0:828:2"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.8.4+commit.c7e474f2.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.3.4",
+  "updatedAt": "2021-06-13T05:47:41.737Z",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  }
+}
